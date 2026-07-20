@@ -1,0 +1,31 @@
+[project]
+name = "quizz-web-app"
+version = "0.1.0"
+description = "Browser-based quiz platform backed by the existing quiz engine"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115.0",
+  "httpx>=0.28.1",
+  "quizz",
+  "uvicorn[standard]>=0.30.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.8.0"]
+build-backend = "uv_build"
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = [
+    "quizz-cli-app/quizz",
+]
+
+[tool.uv.sources]
+quizz = { workspace = true, editable = true }
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]

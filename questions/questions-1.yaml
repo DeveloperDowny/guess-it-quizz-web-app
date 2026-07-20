@@ -1,0 +1,15 @@
+questions:
+  - id: 1
+    question: "Which date idea do you like the most?"
+    options:
+      - "Watching movies"
+      - "Reading books"
+      - "Trying out new cuisine"
+      - "Trying out new places"
+  # - id: 2
+  #   question: "What is your ideal weekend activity?"
+  #   options:
+  #     - "Hiking"
+  #     - "Cooking"
+  #     - "Gaming"
+  #     - "Painting"
