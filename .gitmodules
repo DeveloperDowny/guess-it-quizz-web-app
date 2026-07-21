@@ -1,0 +1,3 @@
+[submodule "quizz-cli-app/quizz"]
+	path = quizz-cli-app/quizz
+	url = https://github.com/DeveloperDowny/guess-it-quizz-cli-app.git
