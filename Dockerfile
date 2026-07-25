@@ -16,7 +16,7 @@ COPY pyproject.toml ./
 
 # Install uv CLI and sync dependencies from uv.lock
 RUN pip install --no-cache-dir --upgrade pip uv && \
-    uv sync --quiet
+    uv sync
 
 # Copy the rest of the application code into the container
 COPY . .
