@@ -1,0 +1,48 @@
+steps:
+  # Build the image
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "${LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REPO_NAME}/${_SERVICE_NAME}:$COMMIT_SHA",
+        ".",
+      ]
+    dir: "${_ROOT_DIR}"
+  # Push the image to Artifact Registry
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "push",
+        "${LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REPO_NAME}/${_SERVICE_NAME}:$COMMIT_SHA",
+      ]
+  # Deploy image to Cloud Run
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: gcloud
+    args:
+      - "run"
+      - "deploy"
+      - "${_SERVICE_NAME}"
+      - "--image"
+      - "${LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REPO_NAME}/${_SERVICE_NAME}:$COMMIT_SHA"
+      - "--region"
+      - "${LOCATION}"
+      - "--set-env-vars=GOOGLE_GENAI_USE_VERTEXAI=${_GOOGLE_GENAI_USE_VERTEXAI},GOOGLE_API_KEY=${_GOOGLE_API_KEY},COMPETITOR_COUNT=${_COMPETITOR_COUNT}"
+      - "--allow-unauthenticated"
+      - "--min-instances"
+      - "0"
+      - "--max-instances"
+      - "10"
+      - "--platform"
+      - "managed"
+      - "--memory"
+      - "4Gi"
+      - "--cpu"
+      - "2"
+      - "--concurrency"
+      - "1"
+
+images:
+  - "${LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REPO_NAME}/${_SERVICE_NAME}:$COMMIT_SHA"
+options:
+  logging: CLOUD_LOGGING_ONLY
