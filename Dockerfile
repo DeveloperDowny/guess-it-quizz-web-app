@@ -12,7 +12,7 @@ WORKDIR /app
 # RUN apt-get update && apt-get install -y --no-install-recommends some-package && rm -rf /var/lib/apt/lists/*
 
 # Copy project metadata and uv lock into the container
-COPY pyproject.toml uv.lock ./
+COPY pyproject.toml ./
 
 # Install uv CLI and sync dependencies from uv.lock
 RUN pip install --no-cache-dir --upgrade pip uv && \
