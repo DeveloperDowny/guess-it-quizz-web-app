@@ -4,7 +4,7 @@
 - I've built a notebook orchestrator `quizz-cli-app\quizz-cli-app.ipynb` which helps player play the quizz app on Google colab notebook easily. The kiro artifacts for the same can be found at `D:\DMisc\quizz-web-app\quizz-cli-app\.kiro`
 - The intent of the project is to build a client + server orchestrator so that users can play the quizz game via website
 
-## Project Preference
+## Project  Preference
 
 - vite + react + tailwind for frontend
 - FastAPI + uv + uv_build + pydantic v2 + google cloud run + google cloud firebase for the backend
