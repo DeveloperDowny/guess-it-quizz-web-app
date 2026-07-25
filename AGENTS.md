@@ -1,4 +1,4 @@
-## Project Intent
+## Project  Intent
 
 - I've built a quizz app whose kiro artifacts can be found at `D:\DMisc\quizz-web-app\quizz-cli-app\quizz\.kiro`
 - I've built a notebook orchestrator `quizz-cli-app\quizz-cli-app.ipynb` which helps player play the quizz app on Google colab notebook easily. The kiro artifacts for the same can be found at `D:\DMisc\quizz-web-app\quizz-cli-app\.kiro`
