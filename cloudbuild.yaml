@@ -1,5 +1,7 @@
 steps:
   # Build the image
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['submodule', 'update', '--init', '--recursive']
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
