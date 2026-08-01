@@ -1,0 +1,40 @@
+questions:
+  - id: 1
+    question: "Which destination would you visit first?"
+    options:
+      - "Paris"
+      - "Tokyo"
+      - "New York"
+      - "Bali"
+
+  - id: 2
+    question: "What's your favorite way to explore a new city?"
+    options:
+      - "Walking around"
+      - "Food tours"
+      - "Museums"
+      - "Shopping"
+
+  - id: 3
+    question: "Which travel style suits you best?"
+    options:
+      - "Luxury vacation"
+      - "Backpacking"
+      - "Road trip"
+      - "Staycation"
+
+  - id: 4
+    question: "Who would you most like to travel with?"
+    options:
+      - "Partner"
+      - "Friends"
+      - "Family"
+      - "Solo"
+
+  - id: 5
+    question: "What's your must-have while traveling?"
+    options:
+      - "Camera"
+      - "Good food"
+      - "Comfortable hotel"
+      - "Detailed itinerary"

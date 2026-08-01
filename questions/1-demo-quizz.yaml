@@ -6,10 +6,10 @@ questions:
       - "Reading books"
       - "Trying out new cuisine"
       - "Trying out new places"
-  # - id: 2
-  #   question: "What is your ideal weekend activity?"
-  #   options:
-  #     - "Hiking"
-  #     - "Cooking"
-  #     - "Gaming"
-  #     - "Painting"
+  - id: 2
+    question: "What is your ideal weekend activity?"
+    options:
+      - "Hiking"
+      - "Cooking"
+      - "Gaming"
+      - "Painting"

@@ -1,0 +1,40 @@
+questions:
+  - id: 1
+    question: "Which meal could you eat every week?"
+    options:
+      - "Pizza"
+      - "Sushi"
+      - "Burgers"
+      - "Home-cooked food"
+
+  - id: 2
+    question: "What's your favorite sweet treat?"
+    options:
+      - "Chocolate"
+      - "Ice cream"
+      - "Pastries"
+      - "Traditional sweets"
+
+  - id: 3
+    question: "Which snack would you grab during a movie?"
+    options:
+      - "Popcorn"
+      - "Chips"
+      - "Nachos"
+      - "Candy"
+
+  - id: 4
+    question: "Which fun activity sounds the most exciting?"
+    options:
+      - "Escape room"
+      - "Bowling"
+      - "Karaoke"
+      - "Mini golf"
+
+  - id: 5
+    question: "How adventurous are you with food?"
+    options:
+      - "I'll try anything"
+      - "I like trying new cuisines"
+      - "I stick to familiar dishes"
+      - "I'm a picky eater"

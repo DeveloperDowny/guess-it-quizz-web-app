@@ -1,0 +1,40 @@
+questions:
+  - id: 1
+    question: "How do you usually recharge?"
+    options:
+      - "Spend time alone"
+      - "Hang out with friends"
+      - "Go outdoors"
+      - "Try something creative"
+
+  - id: 2
+    question: "Which best describes your planning style?"
+    options:
+      - "Everything scheduled"
+      - "Mostly planned"
+      - "Go with the flow"
+      - "Completely spontaneous"
+
+  - id: 3
+    question: "What matters most in your daily routine?"
+    options:
+      - "Productivity"
+      - "Health"
+      - "Relaxation"
+      - "Learning"
+
+  - id: 4
+    question: "How do you usually solve problems?"
+    options:
+      - "Analyze logically"
+      - "Trust my instincts"
+      - "Ask for advice"
+      - "Experiment until it works"
+
+  - id: 5
+    question: "Which environment helps you focus the most?"
+    options:
+      - "Complete silence"
+      - "Soft background music"
+      - "Busy café"
+      - "Nature"
