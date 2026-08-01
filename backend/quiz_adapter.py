@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from quizz.domain.models import AnswerEntry, AnswerSheet, QuestionSet
-from quizz.infrastructure.yaml_repository import YamlQuizRepository
+from impersonation_quizz.domain.models import AnswerEntry, AnswerSheet, QuestionSet
+from impersonation_quizz.infrastructure.yaml_repository import YamlQuizRepository
 
 
 class QuizAdapter:

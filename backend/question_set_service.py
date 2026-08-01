@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from quizz.domain.models import QuestionSet
+from impersonation_quizz.domain.models import QuestionSet
 
 from backend.quiz_adapter import QuizAdapter
 
@@ -10,7 +10,9 @@ from backend.quiz_adapter import QuizAdapter
 class QuestionSetService:
     """Discover and expose question-set definitions from the questions directory."""
 
-    def __init__(self, *, questions_dir: Path, quiz_adapter: QuizAdapter | None = None) -> None:
+    def __init__(
+        self, *, questions_dir: Path, quiz_adapter: QuizAdapter | None = None
+    ) -> None:
         self._questions_dir = questions_dir
         self._quiz_adapter = quiz_adapter or QuizAdapter()
 

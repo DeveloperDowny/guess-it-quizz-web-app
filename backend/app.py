@@ -6,12 +6,13 @@ from typing import Annotated
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from quizz.domain.models import AnswerSheet, QuestionSet
-from quizz.services.judge_service import JudgeService
+from impersonation_quizz.domain.models import AnswerSheet, QuestionSet
+from impersonation_quizz.services.judge_service import JudgeService
 
 from backend.question_set_service import QuestionSetService
 from backend.quiz_adapter import QuizAdapter
 from backend.session_store import SessionStore
+
 
 def cors_origins_from_environment() -> list[str]:
     """Read the explicit frontend-origin allowlist from the environment."""
@@ -70,7 +71,9 @@ def create_session(payload: dict[str, str]) -> dict[str, str]:
         try:
             snapshot = service.load_question_set(question_set_id).model_dump()
         except FileNotFoundError:
-            raise HTTPException(status_code=404, detail="question set not found") from None
+            raise HTTPException(
+                status_code=404, detail="question set not found"
+            ) from None
         except ValueError as error:
             raise HTTPException(status_code=400, detail=str(error)) from error
 
@@ -211,9 +214,13 @@ def get_judge_result(session_id: str) -> dict[str, object]:
     if session is None:
         raise HTTPException(status_code=404, detail="session not found")
     if session.status not in {"completed", "judged"}:
-        raise HTTPException(status_code=409, detail="session must be completed before judging")
+        raise HTTPException(
+            status_code=409, detail="session must be completed before judging"
+        )
     if not session.joined_by:
-        raise HTTPException(status_code=400, detail="both players must join before judging")
+        raise HTTPException(
+            status_code=400, detail="both players must join before judging"
+        )
 
     try:
         if session.question_set_snapshot is None:
@@ -223,19 +230,29 @@ def get_judge_result(session_id: str) -> dict[str, object]:
         players = [session.created_by, session.joined_by]
         sheets = {
             player: {
-                perspective: AnswerSheet.model_validate({"answers": [
-                    {"question-id": int(question_id), "answer": answer}
-                    for question_id, answer in raw_answers.get(player, {}).get(perspective, {}).items()
-                ]})
+                perspective: AnswerSheet.model_validate(
+                    {
+                        "answers": [
+                            {"question-id": int(question_id), "answer": answer}
+                            for question_id, answer in raw_answers.get(player, {})
+                            .get(perspective, {})
+                            .items()
+                        ]
+                    }
+                )
                 for perspective in ("self", "impersonation")
             }
             for player in players
         }
         for player in players:
-            if not raw_answers.get(player, {}).get("self") or not raw_answers.get(player, {}).get("impersonation"):
+            if not raw_answers.get(player, {}).get("self") or not raw_answers.get(
+                player, {}
+            ).get("impersonation"):
                 raise ValueError(f"missing self or impersonation answers for {player}")
     except (TypeError, ValueError, KeyError) as error:
-        raise HTTPException(status_code=400, detail=f"session answers are incomplete: {error}") from error
+        raise HTTPException(
+            status_code=400, detail=f"session answers are incomplete: {error}"
+        ) from error
 
     judgements = []
     judge_service = JudgeService()
@@ -247,21 +264,23 @@ def get_judge_result(session_id: str) -> dict[str, object]:
             player_impersonation_sheet=sheets[player]["impersonation"],
             target_actual_sheet=sheets[target]["self"],
         )
-        judgements.append({
-            "player_name": result.player_name,
-            "target_name": result.target_name,
-            "matched_answers": result.matched_answers,
-            "total_questions": result.total_questions,
-            "reviews": [
-                {
-                    "question_id": review.question.id,
-                    "question": review.question.question,
-                    "guessed_answer": review.guessed_answer,
-                    "correct_answer": review.correct_answer,
-                    "is_match": review.is_match,
-                }
-                for review in result.reviews
-            ],
-        })
+        judgements.append(
+            {
+                "player_name": result.player_name,
+                "target_name": result.target_name,
+                "matched_answers": result.matched_answers,
+                "total_questions": result.total_questions,
+                "reviews": [
+                    {
+                        "question_id": review.question.id,
+                        "question": review.question.question,
+                        "guessed_answer": review.guessed_answer,
+                        "correct_answer": review.correct_answer,
+                        "is_match": review.is_match,
+                    }
+                    for review in result.reviews
+                ],
+            }
+        )
 
     return {"session_id": session.session_id, "results": judgements}
