@@ -1,0 +1,40 @@
+questions:
+  - id: 1
+    question: "If we could move anywhere for 5 years, where would we live?"
+    options:
+      - "Mumbai, but with a nicer apartment"
+      - "Pune, because life needs less chaos"
+      - "Bangalore, for the startup grind"
+      - "Somewhere abroad and pretending we're sorted"
+
+  - id: 2
+    question: "What kind of home would we actually want?"
+    options:
+      - "A fancy high-rise with a killer view"
+      - "A cozy apartment full of plants"
+      - "A huge house with unnecessary gadgets"
+      - "A quiet villa far away from everyone"
+
+  - id: 3
+    question: "What's the biggest reason we'd choose a place to live?"
+    options:
+      - "Amazing food nearby"
+      - "Career opportunities"
+      - "Peace and less traffic"
+      - "Aesthetic cafés and weekend vibes"
+
+  - id: 4
+    question: "What would our neighbourhood probably be like?"
+    options:
+      - "Cafés, gyms and everything within walking distance"
+      - "Quiet and family-friendly"
+      - "Chaotic but somehow perfect"
+      - "Far from civilization but surrounded by nature"
+
+  - id: 5
+    question: "What's most likely to make us move somewhere new?"
+    options:
+      - "One of us gets an insane job offer"
+      - "We randomly fall in love with a city"
+      - "We get tired of Mumbai traffic"
+      - "We decide we need a completely new life"

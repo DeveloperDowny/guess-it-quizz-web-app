@@ -1,0 +1,40 @@
+questions:
+  - id: 1
+    question: "If we suddenly got ₹10 lakh to splurge, what would we waste it on?"
+    options:
+      - "A ridiculous luxury vacation"
+      - "A dream gaming setup"
+      - "A fancy car upgrade"
+      - "A completely unnecessary smart home"
+
+  - id: 2
+    question: "What would my partner be most tempted to buy after getting a big bonus?"
+    options:
+      - "The latest iPhone"
+      - "Designer clothes and shoes"
+      - "An absurdly expensive watch"
+      - "A spontaneous international trip"
+
+  - id: 3
+    question: "What would be our most dangerous couple spending habit?"
+    options:
+      - "Ordering food instead of cooking"
+      - "Booking last-minute trips"
+      - "Buying gadgets we barely use"
+      - "Saying 'it's only ₹2,000' repeatedly"
+
+  - id: 4
+    question: "If we became rich overnight, what upgrade would feel the most exciting?"
+    options:
+      - "A huge luxury apartment"
+      - "A ridiculous home theatre"
+      - "Business-class flights everywhere"
+      - "Our own private gaming room"
+
+  - id: 5
+    question: "What would we both agree is completely worth overspending on?"
+    options:
+      - "Amazing food"
+      - "Travel experiences"
+      - "A beautiful home"
+      - "Making everyday life ridiculously convenient"
