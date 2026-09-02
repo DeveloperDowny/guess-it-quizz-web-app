@@ -1,0 +1,46 @@
+questions:
+
+- id: 1
+  question: "What is the most likely way your partner would accidentally expose your relationship's biggest secret?"
+  options:
+
+  - "Telling their best friend"
+  - "Putting it on Instagram"
+  - "Mentioning it in front of family"
+  - "Saying it out loud while half-asleep"
+
+- id: 2
+  question: "If your partner had a completely useless superpower, what would it be?"
+  options:
+
+  - "Always finding the best food spot"
+  - "Knowing when someone is gossiping"
+  - "Getting free Wi-Fi everywhere"
+  - "Never losing their phone"
+
+- id: 3
+  question: "What would your partner secretly be most offended by?"
+  options:
+
+  - "You stealing their fries"
+  - "You saying their favourite movie is overrated"
+  - "You replying 'K' to a long message"
+  - "You forgetting their coffee order"
+
+- id: 4
+  question: "You get ₹10 lakh together, but you must spend it on something ridiculous. What does your partner choose?"
+  options:
+
+  - "A luxury gaming setup"
+  - "A suspiciously expensive vacation"
+  - "A giant smart home nobody asked for"
+  - "A café because apparently we're entrepreneurs now"
+
+- id: 5
+  question: "What is the most accurate way to describe your partner after knowing them for a while?"
+  options:
+
+  - "Cute but slightly chaotic"
+  - "Looks innocent, is actually dangerous"
+  - "My favourite person to annoy"
+  - "Somehow both my best friend and biggest headache"

@@ -1,0 +1,71 @@
+questions:
+
+- id: 1
+
+  question: "If our relationship had a color palette, which combo would fit us best?"
+
+  options:
+
+  - "Sunset orange + deep purple"
+
+  - "Electric blue + neon pink"
+
+  - "Sage green + warm beige"
+
+  - "Black + cherry red"
+
+- id: 2
+
+  question: "Which pattern would most accurately describe our life together?"
+
+  options:
+
+  - "Beautifully chaotic zigzags"
+
+  - "Satisfying matching stripes"
+
+  - "Random polka dots everywhere"
+
+  - "A suspiciously perfect checkerboard"
+
+- id: 3
+
+  question: "We're decorating our future home. Which color would we accidentally use way too much?"
+
+  options:
+
+  - "Warm yellow"
+
+  - "Midnight blue"
+
+  - "Terracotta"
+
+  - "Lavender"
+
+- id: 4
+
+  question: "If we had matching outfits for a random date night, what would the pattern be?"
+
+  options:
+
+  - "Subtle stripes — cute but not cringe"
+
+  - "Floral — we're committing to the bit"
+
+  - "Checks — classic couple energy"
+
+  - "Absolutely ridiculous prints"
+
+- id: 5
+
+  question: "Which color would best describe our arguments?"
+
+  options:
+
+  - "Red — 0 to 100 real quick"
+
+  - "Blue — quiet but emotionally intense"
+
+  - "Yellow — somehow we're laughing five minutes later"
+
+  - "Purple — confusing, dramatic, and nobody knows how we got here"
