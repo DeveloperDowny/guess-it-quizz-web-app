@@ -43,7 +43,9 @@ class SessionRecord:
             created_by=str(payload["created_by"]),
             question_set_snapshot=payload.get("question_set_snapshot"),
             joined_by=(
-                str(payload["joined_by"]) if payload.get("joined_by") is not None else None
+                str(payload["joined_by"])
+                if payload.get("joined_by") is not None
+                else None
             ),
             status=str(payload.get("status", "created")),
             data=dict(payload.get("data", {})),
@@ -122,22 +124,37 @@ class SessionStore:
 
             answers = session.data.setdefault("answers", {})
             player_answers = answers.setdefault(player_id, {})
+            if player_answers.get("submitted"):
+                raise ValueError("answers cannot be changed after you have submitted")
+
             perspective_answers = player_answers.setdefault(perspective, {})
             perspective_answers[str(question_id)] = answer
             session.status = "in_progress"
             self._save_sessions()
             return session
 
-    def complete_session(self, session_id: str) -> SessionRecord:
-        """Mark a session as ready for judging."""
+    def mark_submitted(self, session_id: str, player_id: str) -> SessionRecord:
+        """Record that one player has finished and submitted their answers.
+
+        The session only transitions to "completed" once both the creator and
+        the joiner have submitted. A player submitting does not affect the
+        other player's ability to keep answering.
+        """
 
         with self._lock:
             session = self._require_session(session_id)
-            if session.status == "created":
-                raise ValueError("a session cannot be completed before a player joins")
-            if session.status not in {"in_progress", "completed"}:
-                raise ValueError("session cannot be completed in its current state")
-            session.status = "completed"
+            if player_id not in {session.created_by, session.joined_by}:
+                raise ValueError("player is not a participant in this session")
+
+            answers = session.data.setdefault("answers", {})
+            player_answers = answers.setdefault(player_id, {})
+            player_answers["submitted"] = True
+
+            creator_submitted = answers.get(session.created_by, {}).get("submitted")
+            joiner_submitted = answers.get(session.joined_by, {}).get("submitted")
+            if creator_submitted and joiner_submitted:
+                session.status = "completed"
+
             self._save_sessions()
             return session
 
@@ -169,7 +186,10 @@ class SessionStore:
         temporary_path = self._storage_path.with_suffix(".tmp")
         with temporary_path.open("w", encoding="utf-8") as store_file:
             json.dump(
-                {session_id: session.to_dict() for session_id, session in self._sessions.items()},
+                {
+                    session_id: session.to_dict()
+                    for session_id, session in self._sessions.items()
+                },
                 store_file,
                 indent=2,
                 sort_keys=True,

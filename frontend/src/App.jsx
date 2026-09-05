@@ -69,17 +69,56 @@ function StartView({ onReady }) {
   </Shell>;
 }
 
+function WaitingView({ onExit, onCheckAgain, busy, sessionId }) {
+  return <Shell>
+    <header className="mb-6 flex flex-wrap items-start justify-between gap-4">
+      <div>
+        <p className="text-sm font-semibold uppercase tracking-[0.25em] text-sky-700">Almost there</p>
+        <p className="mt-1 text-sm text-slate-600">
+          Session ID: <span className="font-mono font-semibold">{sessionId}</span>
+        </p>
+        <h1 className="mt-1 text-3xl font-bold">Waiting for the other player</h1>
+        <p className="mt-1 text-sm text-slate-600">You're all done. We'll show results as soon as they finish too.</p>
+      </div>
+      <button onClick={onExit} className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold">Leave</button>
+    </header>
+    <section className="rounded-2xl bg-white p-8 text-center shadow-sm">
+      <button disabled={busy} onClick={onCheckAgain} className="mt-5 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold disabled:opacity-60">
+        {busy ? "Checking…" : "Check now"}
+      </button>
+    </section>
+  </Shell>;
+}
+
 function PlayerView({ sessionId, playerId, onExit }) {
-  const [questions, setQuestions] = useState([]); const [session, setSession] = useState(null); const [perspective, setPerspective] = useState("self"); const [answers, setAnswers] = useState({ self: {}, impersonation: {} }); const [error, setError] = useState(""); const [busy, setBusy] = useState(false); const [saved, setSaved] = useState(0); const [showJudge, setShowJudge] = useState(false);
-  useEffect(() => { Promise.all([api(`/api/sessions/${encodeURIComponent(sessionId)}`), api(`/api/sessions/${encodeURIComponent(sessionId)}/questions`)]).then(([state, data]) => { setSession(state); setQuestions(data.questions ?? []); const stored = state.data?.answers?.[playerId] ?? {}; setAnswers({ self: stored.self ?? {}, impersonation: stored.impersonation ?? {} }); }).catch((err) => setError(err.message)); }, [sessionId, playerId]);
+  const [questions, setQuestions] = useState([]); const [session, setSession] = useState(null); const [perspective, setPerspective] = useState("self"); const [answers, setAnswers] = useState({ self: {}, impersonation: {} }); const [error, setError] = useState(""); const [busy, setBusy] = useState(false); const [saved, setSaved] = useState(0); const [showJudge, setShowJudge] = useState(false); const [submitted, setSubmitted] = useState(false); const [waiting, setWaiting] = useState(false);
+
+  useEffect(() => { Promise.all([api(`/api/sessions/${encodeURIComponent(sessionId)}`), api(`/api/sessions/${encodeURIComponent(sessionId)}/questions`)]).then(([state, data]) => {
+    setSession(state); setQuestions(data.questions ?? []);
+    const stored = state.data?.answers?.[playerId] ?? {};
+    setAnswers({ self: stored.self ?? {}, impersonation: stored.impersonation ?? {} });
+    if (stored.submitted) { setSubmitted(true); if (state.status === "completed") setShowJudge(true); else setWaiting(true); }
+  }).catch((err) => setError(err.message)); }, [sessionId, playerId]);
+
   const completed = useMemo(() => questions.length > 0 && ["self", "impersonation"].every((kind) => questions.every((q) => answers[kind][q.id] || answers[kind][String(q.id)])), [answers, questions]);
   async function choose(question, answer) { setError(""); setBusy(true); try { await api(`/api/sessions/${encodeURIComponent(sessionId)}/answers`, { method: "POST", body: JSON.stringify({ question_id: question.id, answer, player_id: playerId, perspective }) }); setAnswers((current) => ({ ...current, [perspective]: { ...current[perspective], [question.id]: answer } })); setSaved((count) => count + 1); } catch (err) { setError(err.message); } finally { setBusy(false); } }
-  async function complete() { setError(""); setBusy(true); try { await api(`/api/sessions/${encodeURIComponent(sessionId)}/complete`, { method: "POST" }); setShowJudge(true); } catch (err) { setError(err.message); } finally { setBusy(false); } }
+
+  async function checkStatus() {
+    setError(""); setBusy(true);
+    try {
+      const result = await api(`/api/sessions/${encodeURIComponent(sessionId)}/submit`, { method: "POST", body: JSON.stringify({ player_id: playerId }) });
+      setSubmitted(true);
+      if (result.both_ready) { setWaiting(false); setShowJudge(true); } else { setWaiting(true); }
+    } catch (err) { setError(err.message); } finally { setBusy(false); }
+  }
+
   if (showJudge) return <JudgeView sessionId={sessionId} onExit={onExit} />;
+  if (waiting) return <WaitingView onExit={onExit} onCheckAgain={checkStatus} busy={busy} sessionId={sessionId} />;
+
   return <Shell><header className="mb-6 flex flex-wrap items-start justify-between gap-4"><div><p className="text-sm font-semibold uppercase tracking-[0.25em] text-sky-700">Session room</p><h1 className="mt-1 text-3xl font-bold">{sessionId}</h1><p className="mt-1 text-sm text-slate-600">{session?.joined_by ? "Both players are connected." : "Share this ID with player 2."}</p></div><button onClick={onExit} className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold">Leave</button></header>
     <section className="mb-5 rounded-2xl bg-white p-4 shadow-sm"><div className="flex gap-2"><button onClick={() => setPerspective("self")} className={`flex-1 rounded-lg px-3 py-3 text-sm font-semibold ${perspective === "self" ? "bg-sky-700 text-white" : "bg-slate-100"}`}>My answers</button><button onClick={() => setPerspective("impersonation")} className={`flex-1 rounded-lg px-3 py-3 text-sm font-semibold ${perspective === "impersonation" ? "bg-sky-700 text-white" : "bg-slate-100"}`}>Impersonation answers</button></div><p className="mt-3 text-sm text-slate-600">Choose one option for every question as {perspective === "self" ? "yourself" : "the person you are impersonating"}.</p></section>
-    <ErrorMessage error={error} /><div className="mt-5 space-y-4">{questions.map((question, index) => <article key={question.id} className="rounded-2xl bg-white p-5 shadow-sm"><p className="text-sm font-semibold text-slate-500">Question {index + 1}</p><h2 className="mt-1 text-lg font-semibold">{question.question}</h2><div className="mt-4 grid gap-2 sm:grid-cols-2">{question.options.map((option) => { const selected = answers[perspective][question.id] === option || answers[perspective][String(question.id)] === option; return <button key={option} disabled={busy} onClick={() => choose(question, option)} className={`rounded-lg border px-4 py-3 text-left text-sm transition ${selected ? "border-sky-700 bg-sky-50 text-sky-900" : "border-slate-200 hover:border-sky-400"}`}>{option}</button>; })}</div></article>)}</div>
-    <footer className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-slate-800 p-4 text-sm text-white"><span>{saved} answer{saved === 1 ? "" : "s"} saved this visit.{completed && <span className="ml-2 text-emerald-300">Both perspectives are complete.</span>}</span>{completed && <button disabled={busy} onClick={complete} className="rounded-lg bg-emerald-400 px-3 py-2 font-semibold text-slate-900 disabled:opacity-60">Finish and review</button>}</footer>
+    <ErrorMessage error={error} /><div className="mt-5 space-y-4">{questions.map((question, index) => <article key={question.id} className="rounded-2xl bg-white p-5 shadow-sm"><p className="text-sm font-semibold text-slate-500">Question {index + 1}</p><h2 className="mt-1 text-lg font-semibold">{question.question}</h2><div className="mt-4 grid gap-2 sm:grid-cols-2">{question.options.map((option) => { const selected = answers[perspective][question.id] === option || answers[perspective][String(question.id)] === option; return <button key={option} disabled={busy || submitted} onClick={() => choose(question, option)} className={`rounded-lg border px-4 py-3 text-left text-sm transition ${selected ? "border-sky-700 bg-sky-50 text-sky-900" : "border-slate-200 hover:border-sky-400"} ${submitted ? "opacity-60" : ""}`}>{option}</button>; })}</div></article>)}</div>
+    <footer className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-slate-800 p-4 text-sm text-white"><span>{saved} answer{saved === 1 ? "" : "s"} saved this visit.{completed && <span className="ml-2 text-emerald-300">Both perspectives are complete.</span>}</span>{completed && <button disabled={busy} onClick={checkStatus} className="rounded-lg bg-emerald-400 px-3 py-2 font-semibold text-slate-900 disabled:opacity-60">Submit and check results</button>}</footer>
   </Shell>;
 }
 
