@@ -1,0 +1,41 @@
+questions:
+
+  - id: 1
+    question: "We're at a restaurant and the waiter asks what my partner wants. What are they most likely to order?"
+    options:
+      - "Their usual comfort food"
+      - "The most interesting thing on the menu"
+      - "Whatever I order, but with modifications"
+      - "Something expensive and then say 'it looked good'"
+
+  - id: 2
+    question: "It's 11 PM and my partner suddenly wants a snack. What are they ordering?"
+    options:
+      - "Fries or something fried"
+      - "Dessert, because midnight has no rules"
+      - "Maggi or instant noodles"
+      - "A full meal, because apparently it's dinner again"
+
+  - id: 3
+    question: "We're ordering drinks at a café. What would my partner most likely pick?"
+    options:
+      - "Their trusted classic"
+      - "The fanciest thing on the menu"
+      - "Something cold and ridiculously sweet"
+      - "Whatever has the most interesting name"
+
+  - id: 4
+    question: "We're at a street-food stall in Maharashtra. What would my partner go for first?"
+    options:
+      - "Vada pav"
+      - "Pani puri"
+      - "Misal pav"
+      - "Whatever smells amazing from 10 metres away"
+
+  - id: 5
+    question: "We have ₹2,000 to spend on food and my partner gets complete control. What happens?"
+    options:
+      - "One legendary meal"
+      - "Ten different snacks"
+      - "Dessert first, decisions later"
+      - "Somehow ₹2,000 isn't enough"
