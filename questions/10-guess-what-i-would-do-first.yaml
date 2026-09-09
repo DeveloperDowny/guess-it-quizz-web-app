@@ -1,0 +1,41 @@
+questions:
+
+  - id: 1
+    question: "We suddenly get a completely free Saturday with zero responsibilities. What would I do first?"
+    options:
+      - "Sleep until my body files a complaint"
+      - "Order something delicious"
+      - "Disappear into YouTube or Netflix"
+      - "Suggest going somewhere at the last minute"
+
+  - id: 2
+    question: "I wake up to ₹1 crore sitting in my bank account with no explanation. What's my first move?"
+    options:
+      - "Check the bank app seventeen times"
+      - "Call you before doing anything stupid"
+      - "Start planning a ridiculous shopping spree"
+      - "Immediately search how to invest it"
+
+  - id: 3
+    question: "We get stuck at home together during a massive power cut. What would I do first?"
+    options:
+      - "Complain about the Wi-Fi"
+      - "Find snacks"
+      - "Turn it into an impromptu date"
+      - "Use my phone until the battery gives up"
+
+  - id: 4
+    question: "We land in a completely new city with no plans for the day. What would I do first?"
+    options:
+      - "Search for the best food nearby"
+      - "Open Google Maps and pretend I have a plan"
+      - "Start taking photos"
+      - "Say 'let's just walk around' and get us completely lost"
+
+  - id: 5
+    question: "I suddenly get one week with absolutely no work, deadlines, or obligations. What would I do first?"
+    options:
+      - "Create an ambitious plan and abandon it"
+      - "Book a spontaneous trip"
+      - "Finally start that random project"
+      - "Do absolutely nothing and call it recovery"
