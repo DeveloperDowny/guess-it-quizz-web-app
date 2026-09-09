@@ -1,0 +1,41 @@
+questions:
+
+  - id: 1
+    question: "Who would accidentally wave back at someone who wasn't waving at them, dragging the other into the embarrassment?"
+    options:
+      - "Me, with full confidence"
+      - "You, then pretend it was intentional"
+      - "Me, and immediately look at the floor"
+      - "You, and somehow make it worse"
+
+  - id: 2
+    question: "Who would confidently mispronounce a fancy restaurant dish while ordering for both of us?"
+    options:
+      - "Me, like I invented the pronunciation"
+      - "You, with unnecessary confidence"
+      - "Me, after hearing it once"
+      - "You, and then correct the waiter"
+
+  - id: 3
+    question: "Who would start dancing in public because they heard their favourite song, forcing the other to participate?"
+    options:
+      - "Me, zero shame"
+      - "You, after pretending not to care"
+      - "Me, only for five seconds"
+      - "You, and somehow attract an audience"
+
+  - id: 4
+    question: "Who would accidentally make a completely normal conversation sound suspicious by explaining it way too much?"
+    options:
+      - "Me, because I over-explain everything"
+      - "You, because silence feels awkward"
+      - "Me, after realizing everyone is listening"
+      - "You, and then make it even more suspicious"
+
+  - id: 5
+    question: "Who would confidently tell a joke to impress the other's friends and immediately regret having an audience?"
+    options:
+      - "Me, convinced I'm hilarious"
+      - "You, after one too many coffees"
+      - "Me, because I cannot resist a bad joke"
+      - "You, then laugh at your own joke"
