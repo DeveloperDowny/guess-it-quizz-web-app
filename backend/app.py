@@ -193,17 +193,31 @@ def submit_answer(session_id: str, payload: dict[str, str | int]) -> dict[str, s
     return {"status": "ok"}
 
 
-@app.post("/api/sessions/{session_id}/complete")
-def complete_session(session_id: str) -> dict[str, str]:
-    """Mark a joined session as completed and ready for judging."""
+@app.post("/api/sessions/{session_id}/submit")
+def submit_session(session_id: str, payload: dict[str, str]) -> dict[str, object]:
+    """Mark one player as finished. The session only becomes 'completed'
+    once both the creator and the joiner have submitted; a single player
+    finishing does not end the session for the other player.
+    """
+
+    player_id = payload.get("player_id", "")
+    if not player_id:
+        raise HTTPException(status_code=400, detail="player_id is required")
 
     try:
-        session = app.state.session_store.complete_session(session_id)
+        session = app.state.session_store.mark_submitted(
+            session_id=session_id, player_id=player_id
+        )
     except KeyError:
         raise HTTPException(status_code=404, detail="session not found") from None
     except ValueError as error:
         raise HTTPException(status_code=409, detail=str(error)) from error
-    return {"session_id": session.session_id, "status": session.status}
+
+    return {
+        "session_id": session.session_id,
+        "status": session.status,
+        "both_ready": session.status == "completed",
+    }
 
 
 @app.get("/api/sessions/{session_id}/judge")
@@ -213,7 +227,7 @@ def get_judge_result(session_id: str) -> dict[str, object]:
     session = app.state.session_store.get_session(session_id)
     if session is None:
         raise HTTPException(status_code=404, detail="session not found")
-    if session.status not in {"completed", "judged"}:
+    if session.status != "completed":
         raise HTTPException(
             status_code=409, detail="session must be completed before judging"
         )
