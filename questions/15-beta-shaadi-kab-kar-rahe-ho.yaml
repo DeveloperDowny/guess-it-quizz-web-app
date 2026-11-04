@@ -1,0 +1,41 @@
+questions:
+
+  - id: 1
+    question: "At a family function, an aunty asks, 'Beta, shaadi kab kar rahe ho?' How does my partner react?"
+    options:
+      - "Fake smile and 'Abhi career pe focus hai, aunty'"
+      - "Points at me and says 'Inse poochiye'"
+      - "Escapes to refill their plate"
+      - "Changes the topic to aunty's own beta"
+
+  - id: 2
+    question: "Both families suddenly say, 'Date fix kar dete hain!' What is my partner's first reaction?"
+    options:
+      - "Googles 'how to plan a wedding in 24 hours'"
+      - "Asks 'Lehenga ya sherwani, kya pehenna hai?'"
+      - "Sits down dramatically and says 'Ye kab hua?'"
+      - "Starts the guest list and immediately argues about it"
+
+  - id: 3
+    question: "We finally decide to get married. What kind of shaadi would my partner choose?"
+    options:
+      - "A destination wedding in the hills"
+      - "A simple court marriage and a long honeymoon trip"
+      - "A full dhoom-dhaam banquet in Mumbai"
+      - "An intimate farmhouse celebration near Pune"
+
+  - id: 4
+    question: "Who would my partner absolutely refuse to cut from the shaadi guest list?"
+    options:
+      - "Every single college friend"
+      - "The distant uncle who gives a big shagun"
+      - "The entire WhatsApp family group"
+      - "Nobody, because 'sabko bulao, sabko khilao'"
+
+  - id: 5
+    question: "Which shaadi function would my partner be the most dramatic about?"
+    options:
+      - "Mehendi, wants a full piece of art on their hands"
+      - "Sangeet, wants a choreographed performance"
+      - "Baraat, wants a grand entry with full filmy music"
+      - "The food, because 'menu hi asli shaadi hai'"

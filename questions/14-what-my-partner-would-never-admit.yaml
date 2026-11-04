@@ -1,0 +1,41 @@
+questions:
+
+  - id: 1
+    question: "What would my partner never admit about their sense of direction?"
+    options:
+      - "That Google Maps is smarter than them"
+      - "That we have definitely passed this signal before"
+      - "That they have no clue where we are"
+      - "That they have been following a random auto this whole time"
+
+  - id: 2
+    question: "What would my partner never admit about their screen time?"
+    options:
+      - "That 'five more minutes' was two hours ago"
+      - "That they watched my story before replying to my text"
+      - "That they started the series without me"
+      - "That they muted the group chat just for peace"
+
+  - id: 3
+    question: "What would my partner never admit about their college days?"
+    options:
+      - "That they crammed everything the night before the exam"
+      - "That they bunked a lecture and almost got caught"
+      - "That they nodded at lectures they didn't understand"
+      - "That they borrowed notes and never returned them"
+
+  - id: 4
+    question: "What would my partner never admit about our trips together?"
+    options:
+      - "That they secretly packed too much"
+      - "That they were exhausted but kept saying 'I'm fine'"
+      - "That my itinerary was actually better than theirs"
+      - "That the best part was the random roadside food"
+
+  - id: 5
+    question: "What would my partner never admit about missing me?"
+    options:
+      - "That they rewatch our travel videos"
+      - "That they check my last seen way too often"
+      - "That the weekend feels boring when we're in different cities"
+      - "That they have my photo as their lock screen and they won't tell me"
