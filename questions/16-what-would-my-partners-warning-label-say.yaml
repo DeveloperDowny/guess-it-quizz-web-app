@@ -1,0 +1,41 @@
+questions:
+
+  - id: 1
+    question: "My partner has a warning label for when they're hungry. What would it say?"
+    options:
+      - "Mood may change faster than Mumbai rains"
+      - "Do not make any decisions near this person"
+      - "Cannot be reasoned with until fed"
+      - "Turns into a food critic and a negotiator"
+
+  - id: 2
+    question: "What would the warning label on my partner's phone say?"
+    options:
+      - "Replies within 3-5 business days"
+      - "Will say 'seen' and then forget the message exists"
+      - "Contains 4,000 unread notifications"
+      - "Battery at 2% at all times"
+
+  - id: 3
+    question: "What would my partner's warning label say when we travel together?"
+    options:
+      - "Will pack at the last minute"
+      - "May take 400 photos of a single sunset"
+      - "Contains an unpredictable itinerary"
+      - "Will say 'just five more minutes' at every viewpoint"
+
+  - id: 4
+    question: "What would my partner's warning label say during movie night?"
+    options:
+      - "May talk through the entire plot"
+      - "Will loudly predict the wrong ending"
+      - "Falls asleep in the first twenty minutes"
+      - "Do not trust, already googled the ending"
+
+  - id: 5
+    question: "What would my partner's warning label say when I'm upset?"
+    options:
+      - "May attempt humour, results vary"
+      - "Will try to fix everything with food"
+      - "May say the wrong thing with the best intentions"
+      - "Hugs may be deployed without notice"

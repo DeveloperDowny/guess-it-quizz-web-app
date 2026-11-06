@@ -1,0 +1,41 @@
+questions:
+
+  - id: 1
+    question: "A zombie apocalypse breaks out on the Mumbai–Pune Expressway. What is my partner's very first move?"
+    options:
+      - "Panic-buy snacks at the nearest food plaza"
+      - "Assign everyone roles and appoint themselves leader"
+      - "Film it for Instagram before running"
+      - "Ask if the hotel booking is still refundable"
+
+  - id: 2
+    question: "We adopt a pet cockroach that refuses to leave our future house. What would my partner name it?"
+    options:
+      - "Bhaiya Ji"
+      - "Dr. Crunch"
+      - "Rahul, for absolutely no reason"
+      - "Something from our college days"
+
+  - id: 3
+    question: "My partner wins a free one-way ticket to anywhere, but has to leave in two hours. What happens?"
+    options:
+      - "Packs for three weeks, forgets the charger"
+      - "Packs only snacks and a power bank"
+      - "Grabs me along without asking"
+      - "Spends 1 hour 59 minutes deciding and misses it"
+
+  - id: 4
+    question: "A genie gives my partner one ridiculously specific wish. What do they ask for?"
+    options:
+      - "A phone battery that never dies"
+      - "Pune weather in Mumbai all year round"
+      - "Every restaurant bill that splits itself"
+      - "A teleporter straight to Lonavala for bhajiyas"
+
+  - id: 5
+    question: "We get stuck in a lift for 30 minutes. What does my partner end up doing?"
+    options:
+      - "Starts a deep conversation about life"
+      - "Organises a round of antakshari"
+      - "Takes 47 selfies in the mirror"
+      - "Falls asleep standing up"

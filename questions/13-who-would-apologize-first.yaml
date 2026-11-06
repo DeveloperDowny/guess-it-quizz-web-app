@@ -1,0 +1,41 @@
+questions:
+
+  - id: 1
+    question: "We argue about directions on a road trip and the car goes silent. Who would apologize first?"
+    options:
+      - "Me, after exactly ten minutes of silence"
+      - "You, with a snack as a peace offering"
+      - "Me, but I'll pretend it's not an apology"
+      - "Neither, until a toll booth interrupts us"
+
+  - id: 2
+    question: "One of us left the other on 'seen' for six hours. Who would apologize first?"
+    options:
+      - "Me, with a long dramatic paragraph"
+      - "You, with a meme and a heart"
+      - "Me, 'sorry baby' in 0.2 seconds"
+      - "You, but only after I send 'k' first"
+
+  - id: 3
+    question: "It turns out one of us was right all along, but the argument already lasted an hour. Who would apologize first?"
+    options:
+      - "Me, with full dignity and zero eye contact"
+      - "You, by suddenly offering to pay for dinner"
+      - "Me, while insisting I was only 80% wrong"
+      - "You, but by changing the topic and hoping it counts"
+
+  - id: 4
+    question: "One of us showed up an hour late for a Mumbai–Pune meetup blaming the 'train delay'. Who would apologize first?"
+    options:
+      - "Me, with chai and a very guilty face"
+      - "You, with a thousand sorry emojis"
+      - "Me, but only after you stop the silent treatment"
+      - "You, while still blaming the traffic"
+
+  - id: 5
+    question: "We are in a fight and neither of us can remember why it started. Who would apologize first?"
+    options:
+      - "Me, because I cannot handle the silence"
+      - "You, because you secretly miss my voice"
+      - "Me, but only after you smile first"
+      - "Both at once, then we argue about who said it first"
